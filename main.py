@@ -14,7 +14,7 @@ d1.affichePoints()
 print(d1.valeur())"""
 
 
-"""class CompteBancaire:
+class CompteBancaire:
   def __init__(self,nom='Dupont',solde=1000):
     self.nom = nom
     self.solde = solde
@@ -26,9 +26,9 @@ print(d1.valeur())"""
     self.solde-= montant
 
   def affiche(self):
-    return "Le solde du compte bancaire de " + self.nom + " est de " + str(self.solde) + " euros"
+    print("Le solde du compte bancaire de " + self.nom + " est de " + str(self.solde) + " euros")
 
-cpt1 = CompteBancaire()
+"""cpt1 = CompteBancaire()
 print(cpt1.affiche())
 cpt1.depot(100)
 print(cpt1.affiche())
@@ -64,3 +64,22 @@ v1.accelerer(1.3,20)
 print(v1.afficheTout())"""
 
 
+class CompteEpargne (CompteBancaire):
+  def __init__(self,nom='Dupont',solde=1000):
+    CompteBancaire.__init__(self,nom,solde)
+    self.taux = 0.03
+
+  def changeTaux(self, taux):
+    self.taux = taux
+
+  def capitalisation(self, nbMois):
+    print("Capitalisation sur "+ str(nbMois)+ " mois au taux mensuel de " + str(self.taux) + "%")
+    for x in range(0,nbMois):
+      self.depot(self.solde*self.taux)
+
+c1 = CompteEpargne("Bixente",1000)
+c1.affiche()
+c1.capitalisation(3)
+c1.affiche()
+
+    
